@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Weather App</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Global Weather Dashboard</h1>
+        
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search for a city...">
+            <button onclick="searchCity()">Search</button>
+        </div>
+
+        <div class="weather-grid">
+            <% weatherData.forEach(data => { %>
+                <div class="weather-card">
+                    <h2><%= data.location.name %>, <%= data.location.country %></h2>
+                    <div class="weather-info">
+                        <img src="<%= data.current.condition.icon %>" alt="weather icon">
+                        <p class="temperature"><%= data.current.temp_c %>°C</p>
+                        <p class="description"><%= data.current.condition.text %></p>
+                        <div class="details">
+                            <p>Humidity: <%= data.current.humidity %>%</p>
+                            <p>Wind: <%= data.current.wind_kph %> km/h</p>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+    <script src="/js/main.js"></script>
+</body>
+</html> 
